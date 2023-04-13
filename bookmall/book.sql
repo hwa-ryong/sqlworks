@@ -7,7 +7,7 @@ CREATE TABLE book(
 );
 
 -- 이름 변경
---ALTER TABLE book RENAME COLUMN price To saleprice;
+ALTER TABLE book RENAME COLUMN saleprice To price;
 -- 자료형 변경
 --ALTER TABLE book MODIFY bookname VARCHAR2(60);
 
