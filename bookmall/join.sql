@@ -74,4 +74,69 @@ FROM orders
 WHERE custid = (SELECT custid
                 FROM customer
                 WHERE name = '김연아');
+                
+-- 인라인 뷰 : From 부속질의
+-- 고객번호가 2이하인 고객의 판매액을 검색하시오.
+SELECT cus.name, SUM(ord.saleprice) total
+FROM (SELECT custid, name FROM customer WHERE custid <= 2) cus, orders ord
+WHERE cus.custid = ord.custid
+GROUP BY cus.name;
+
+-- 뷰(View) 생성
+-- 주소에 '대한민국'을 포함하는 고객들로 뷰를 구성하시오
+-- CREATE VIEW 뷰이름
+-- AS SELECT 문
+
+CREATE VIEW vw_Customer
+AS SELECT * FROM customer 
+WHERE address LIKE '%대한민국%';
+
+-- 뷰 검색
+SELECT * FROM vw_Customer;
+-- 뷰 삭제
+DROP VIEW vw_Customer;
+
+-- 고객의 이름과 주문한 도서의 이름과 가격을 검색하시오
+CREATE VIEW vw_Orders
+AS SELECT cus.name, bo.bookname, ord.saleprice
+FROM customer cus, orders ord, book bo
+WHERE cus.custid = ord.custid
+AND bo.bookid = ord.bookid;
+
+-- 뷰로 검색
+SELECT * FROM vw_Orders;
+
+-- 고객과 고객의 주문에 관한 데이터를 모두 검색하시오
+SELECT cus.name, ord.saleprice
+FROM customer cus, orders ord
+WHERE cus.custid = ord.custid
+GROUP BY cus.name, ord.saleprice;
+
+-- STANDARD JOIN (FROM 절에 INNER JOIN - ON)
+SELECT cus.name, ord.saleprice
+FROM customer cus INNER JOIN orders ord
+     ON cus.custid = ord.custid
+     ORDER BY cus.name;
+     
+-- OUTER JOIN : 외부 조인
+-- JOIN 조건에 충족하는 데이터가 아니어도 출력할 수 있는 방식
+-- LEFT OUTER JOIN, RIGHT OUTER JOIN
+SELECT cus.name, ord.saleprice
+FROM customer cus LEFT OUTER JOIN orders ord
+     ON cus.custid = ord.custid
+     ORDER BY cus.name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
