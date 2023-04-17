@@ -20,6 +20,13 @@ SELECT * FROM tb1_student;
 
 -- 1. 주소가 '경기도'인 학생을 검색하시오.
 SELECT * FROM tb1_student WHERE address LIKE '%경기도%';
+-- 2. 주소가 '경기도'이고 남자인 학생을 검색하시오.
+SELECT * FROM tb1_student
+WHERE address LIKE '경기도%'
+AND gender = '남자';
+-- 3. 나이가 많은 순으로 정렬하시오.
+SELECT * FROM tb1_student 
+ORDER BY age desc;
 
 
 
