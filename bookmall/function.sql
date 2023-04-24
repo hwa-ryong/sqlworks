@@ -21,6 +21,7 @@ SELECT sal 급여,
        TRUNC(sal/30, -1) 결과3
 FROM employee;
 
+
 -- 고객별 평균 주문 금액을 백원 단위로 반올림한 값을 구하시오
 SELECT custid 고객번호, ROUND(AVG(saleprice), -2) 평균주문금액
 FROM orders
