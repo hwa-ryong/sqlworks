@@ -13,7 +13,7 @@ INSERT INTO customer VALUES (3, '안산', '대한민국 광주광역시', '000-7000-0001');
 INSERT INTO customer VALUES (4, '류현진', '미국 토론토', NULL);
 INSERT INTO customer VALUES (5, '손흥민', '영국 토트넘', '000-8000-0001');
 INSERT INTO customer VALUES (6, '김하늘', '대한민국 성남시', '000-9000-0001');
-INSERT INTO customer VALUES (7, '박대양', '대한민국 용인시', '000-8000-0002');
+INSERT INTO customer VALUES (7, '박대양', '대한민국 용인시', '000-9000-0002');
 
 SELECT * FROM customer;
 
@@ -23,9 +23,14 @@ FROM customer
 WHERE phone IS NULL;
 
 -- 주소가 대한민국인 고객을 검색하시오
-SELECT *
+SELECT * 
 FROM customer
-WHERE address LIKE ('대한민국%');
+WHERE address LIKE '대한민국%';
+
+-- 고객을 이름순으로 정렬하시오(오름차순[ASC]/내림차순[DESC])
+SELECT * 
+FROM customer
+ORDER BY name;
 
 
 
