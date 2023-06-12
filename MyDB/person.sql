@@ -7,7 +7,12 @@ CREATE TABLE person(
 );
 
 INSERT INTO person(userid, userpw, name, age)
-VALUES ('cloud', 'cloud123', '구름이', 120);
+VALUES ('cloud', 'cloud123', '구름이', 3);
+
+INSERT INTO person(userid, userpw, name, age)
+VALUES ('today', 'today123', '봄이', 5);
+
+SELECT * FROM person;
 
 COMMIT;
 
